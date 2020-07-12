@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MyProject\\MusicApi\\SpiderMusic\\SpiderMusic.csproj": {}
+    "D:\\project\\-\\SpiderMusic.csproj": {}
   },
   "projects": {
-    "D:\\MyProject\\MusicApi\\SpiderMusic\\SpiderMusic.csproj": {
+    "D:\\project\\-\\SpiderMusic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MyProject\\MusicApi\\SpiderMusic\\SpiderMusic.csproj",
+        "projectUniqueName": "D:\\project\\-\\SpiderMusic.csproj",
         "projectName": "SpiderMusic",
-        "projectPath": "D:\\MyProject\\MusicApi\\SpiderMusic\\SpiderMusic.csproj",
-        "packagesPath": "C:\\Users\\34618\\.nuget\\packages\\",
-        "outputPath": "D:\\MyProject\\MusicApi\\SpiderMusic\\obj\\",
+        "projectPath": "D:\\project\\-\\SpiderMusic.csproj",
+        "packagesPath": "C:\\Users\\182844\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\-\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\34618\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\182844\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,9 +38,25 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "JavaScriptEngineSwitcher.ChakraCore": {
+              "target": "Package",
+              "version": "[3.5.6, )"
+            },
+            "JavaScriptEngineSwitcher.ChakraCore.Native.win-x64": {
+              "target": "Package",
+              "version": "[3.5.6, )"
+            },
+            "JavaScriptEngineSwitcher.Core": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
             "Nancy": {
               "target": "Package",
               "version": "[2.0.0, )"
+            },
+            "System.Collections": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [
@@ -58,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

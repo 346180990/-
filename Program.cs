@@ -15,7 +15,7 @@ namespace SpiderMusic
             string statusCode;
             string postData="";
             ///weapi/login/cellphone?csrf_token=
-            GetDataAsync(out statusCode, postData, "https://music.163.com/weapi/login/cellphone?csrf_token=");
+            GetDataAsync(out statusCode, postData, "http://music.163.com/weapi/login/cellphone?csrf_token=");
             string s =ChooseUserAgent("pc");
             Console.WriteLine(s);
         }
@@ -33,8 +33,9 @@ namespace SpiderMusic
                 List<KeyValuePair<string, string>> param = new List<KeyValuePair<string, string>>();
                 Crypto crypto = new Crypto();
                 returnValue resultmath =crypto.Weapi("");
+                //JSEngine.getJSEngine();
                 param.Add(new KeyValuePair<string, string>("params", resultmath.Params));
-                param.Add(new KeyValuePair<string, string>("encSecKey", "840a2d4758355c861800f3949c41ef28a98c1e9bafb7bbb4e61d29afccdc8673fcf5d8c893630bf5c3a27ab2502f4cbebe1a609fd92f06f0f8c8357eb47a54e5e7aa567f438aafb90283f453693ac77c8fbe8071a159803de50a9064179167cee1fc49f0aee3817e4c26b68866fc17299c5e90b124bd4fc9ce2dda91a19eacfd"));
+                param.Add(new KeyValuePair<string, string>("encSecKey", "cebe9a167f1e5a0a68d7aec728cc02bdc31ba45fef7250ba3c359331f2ec6b53e135a7b9a9bf7213959a1569be0d11e8f341809b356598d2becebb68f271d1f5e7597fee97265f09abfaec2c2f36125d31ead08d41f79553bd4b19a895432a5a177d05e88034f63bb45ce558a2b06e16d8125685f724aee28fc7405f8addf6ff"));
                 var content = new FormUrlEncodedContent(param);
                 //异步Post
                 HttpResponseMessage response = httpClient.PostAsync(url, content).Result;

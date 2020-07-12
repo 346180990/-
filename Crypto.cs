@@ -32,7 +32,7 @@ namespace SpiderMusic
             JavaScriptSerializer json = new JavaScriptSerializer();
             string phonejson=json.Serialize(phone);
             var n = new Random().Next(10, 26);
-            var secretKey = base62.Substring(n, n + 16);
+            //var secretKey = base62.Substring(n, n + 16);
             //第一次
             string aesEncrypt = AesEncrypt(phonejson, presetKey, iv);
             //第二次
@@ -43,6 +43,12 @@ namespace SpiderMusic
         }
         public string AesEncrypt(string phonejson, string presetKey, string iv)
         {
+            var pad = 16 - (phonejson.Length % 16);
+            Random suiji = new Random();
+            int j = suiji.Next(0, 256);
+            phonejson = phonejson + pad * j;
+
+
             Byte[] plainBytes = Encoding.UTF8.GetBytes(phonejson);
             //用指定的密钥和初始化向量创建CBC模式的DES加密标准
             AesCryptoServiceProvider aesAlg = new AesCryptoServiceProvider();
@@ -51,20 +57,22 @@ namespace SpiderMusic
             aesAlg.IV = Encoding.UTF8.GetBytes(iv);
 
             ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+            // Create the streams used for encryption.
             using (MemoryStream msEncrypt = new MemoryStream())
             {
                 using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
                 {
                     using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
                     {
-                        swEncrypt.Write(plainBytes);
+                        //Write all data to the stream.
+                        swEncrypt.Write(phonejson);
                     }
                     byte[] bytes = msEncrypt.ToArray();
                     var ddc = Convert.ToBase64String(bytes);
-                    byte[] inputBytes = Convert.FromBase64String(ddc);
                     return ddc;
                 }
             }
+
         }
         //public string RsaEncrypt(string presetKey,string publicKey) 
         //{
