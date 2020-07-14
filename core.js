@@ -1004,7 +1004,9 @@ function d(d, e, f, g) {
     var h = {},
         i = a(16);
     h.encText = b(d, g);
-    return h.encText = b(h.encText, i)
+    h.encText = b(h.encText, i);
+    h.encSecKey = c(i, e, f);
+    return h.encText + ",,," + h.encSecKey
 }
 
 function d2(d, e, f, g) {
@@ -1029,6 +1031,3 @@ function myFunc2(parasjson) {
 };
 
 
-function myFunc2() {
-    return 2;
-};

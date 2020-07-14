@@ -7,6 +7,7 @@ using System.Text;
 using SpiderMusic.model;
 using Nancy.Json;
 using System.Collections;
+using System.Linq;
 
 namespace SpiderMusic
 {
@@ -20,8 +21,19 @@ namespace SpiderMusic
                 Countrycode = "86",
                 RememberLogin = "true"
             };
+            var commit = new commit 
+            {
+                Csrf_token="",
+                Cursor= "-1",
+                Offset= "0",
+                OrderType= "1",
+                PageNo= "1",
+                PageSize= "20",
+                Rid= "A_PL_0_924680166",
+                ThreadId= "A_PL_0_924680166"
+            };
             JavaScriptSerializer json = new JavaScriptSerializer();
-            string phonejson = json.Serialize(phone);
+            string phonejson = json.Serialize(commit);
             //获取本地core地址
             string ScriptPath = Path.Combine(Directory.GetCurrentDirectory(), "core.js");
             //获取js引擎实例
@@ -33,8 +45,9 @@ namespace SpiderMusic
             var returnValue = new returnValue();
             try
             {
-                returnValue.Params = engine.CallFunction("myFunc", phonejson).ToString();
-                returnValue.encSecKey = engine.CallFunction("myFunc", phonejson).ToString();
+                string[] s = engine.CallFunction("myFunc", phonejson).ToString().Split(",,,");
+                returnValue.Params = s[0];
+                returnValue.encSecKey = s[1];
             }
             catch (Exception e) 
             {

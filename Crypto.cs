@@ -10,7 +10,7 @@ using System.Text;
 namespace SpiderMusic
 {
     /// <summary>
-    /// cbc加密
+    /// 弃用
     /// </summary>
     class Crypto
     {
