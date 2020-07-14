@@ -12,7 +12,7 @@ namespace SpiderMusic
 {
     class JSEngine
     {
-        public static string getJSEngine() {
+        public static returnValue getJSEngine() {
             var phone = new phone
             {
                 Phone = "13201661424",
@@ -23,23 +23,24 @@ namespace SpiderMusic
             JavaScriptSerializer json = new JavaScriptSerializer();
             string phonejson = json.Serialize(phone);
             //获取本地core地址
-            string ScriptPath = Path.Combine(Directory.GetCurrentDirectory(), "core_.js");
+            string ScriptPath = Path.Combine(Directory.GetCurrentDirectory(), "core.js");
             //获取js引擎实例
             var switcher = JsEngineSwitcher.Current;
             switcher.EngineFactories.Add(new ChakraCoreJsEngineFactory());
             switcher.DefaultEngineName = ChakraCoreJsEngine.EngineName;
             IJsEngine engine = JsEngineSwitcher.Current.CreateDefaultEngine();
             engine.ExecuteFile(ScriptPath, Encoding.UTF8);
+            var returnValue = new returnValue();
             try
             {
-                var result = engine.CallFunction("myFunc", phonejson);
-                
+                returnValue.Params = engine.CallFunction("myFunc", phonejson).ToString();
+                returnValue.encSecKey = engine.CallFunction("myFunc", phonejson).ToString();
             }
             catch (Exception e) 
             {
                 Console.WriteLine(e);
             }
-            return "1";
+            return returnValue;
         }
     }
 }

@@ -33,7 +33,7 @@ namespace SpiderMusic
                 List<KeyValuePair<string, string>> param = new List<KeyValuePair<string, string>>();
                 Crypto crypto = new Crypto();
                 returnValue resultmath =crypto.Weapi("");
-                //JSEngine.getJSEngine();
+                JSEngine.getJSEngine();
                 param.Add(new KeyValuePair<string, string>("params", resultmath.Params));
                 param.Add(new KeyValuePair<string, string>("encSecKey", "cebe9a167f1e5a0a68d7aec728cc02bdc31ba45fef7250ba3c359331f2ec6b53e135a7b9a9bf7213959a1569be0d11e8f341809b356598d2becebb68f271d1f5e7597fee97265f09abfaec2c2f36125d31ead08d41f79553bd4b19a895432a5a177d05e88034f63bb45ce558a2b06e16d8125685f724aee28fc7405f8addf6ff"));
                 var content = new FormUrlEncodedContent(param);
